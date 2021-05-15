@@ -1,4 +1,5 @@
 <template>
+    <!-- Your personal stickers -->
     <h1>Fast Notes</h1>
     <input type="text" 
         @keyup.enter="check($event.target.value)"
@@ -21,14 +22,17 @@ export default {
         Notes
     },
     setup() {
-        // console.log(props.notesData);
         const notesData = ref([])
         const newNote = ref('')
-        notesData.value = ['Nota 1', 'Nota 2'];
+        notesData.value = [
+            {'id': '2313123213', 'title': 'Nota 1'},
+            {'id': '1111111111', 'title': 'Nota 2'}
+        ];
 
         const check = (note_written) => {
             if(note_written !== '') {
-                notesData.value.push(note_written)
+                let uniqueID = Date.now();
+                notesData.value.push({id: uniqueID, title: note_written})
             }
 
             newNote.value = ''

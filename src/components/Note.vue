@@ -1,6 +1,7 @@
 <template>
     <div class="v-card">
         <span>{{ title }}</span>
+        <div class="remove_note" @click="removeNote($event.target)">x</div>
     </div>
 </template>
 
@@ -12,7 +13,14 @@ export default {
         }
     },
     setup() {
-        // console.log(props, '');
+        const removeNote = (e) => {
+            console.log(e);
+            e.closest('div.v-card').remove()
+        }
+
+        return {
+            removeNote
+        }
     }
 
 }
@@ -23,5 +31,20 @@ export default {
         border: 2px solid mediumslateblue;
         padding: 10px;
         margin: 4px;
+        position: relative;
     }
+
+    .v-card > .remove_note {
+        width: 16px;
+        border-radius: 50px;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        height: 16px;
+        background-color: tomato;
+        color: white;
+        cursor: pointer;
+        font-size: 12px;
+    }
+
 </style>
