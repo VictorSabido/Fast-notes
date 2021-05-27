@@ -2,7 +2,7 @@
     <!-- Your personal stickers -->
     <h1>Fast Notes</h1>
     <input type="text" 
-        @keyup.enter="check($event.target.value)"
+        @keyup.enter="addNote($event.target.value)"
         v-model="newNote"
     />
 
@@ -15,6 +15,7 @@
 
 import Notes from './components/Notes.vue'
 import { ref } from 'vue'
+import notesStore from './store/notes'
 
 export default {
     name: 'App',
@@ -24,22 +25,18 @@ export default {
     setup() {
         const notesData = ref([])
         const newNote = ref('')
-        notesData.value = [
-            {'id': '2313123213', 'title': 'Nota 1'},
-            {'id': '1111111111', 'title': 'Nota 2'}
-        ];
+        notesData.value = notesStore.state.notes
 
-        const check = (note_written) => {
+        const addNote = (note_written) => {
             if(note_written !== '') {
-                let uniqueID = Date.now();
-                notesData.value.push({id: uniqueID, title: note_written})
+                notesStore.commit('addNote', note_written)
             }
 
             newNote.value = ''
         }
 
         return {
-            check,
+            addNote,
             notesData,
             newNote
         }
