@@ -1,0 +1,39 @@
+.v-card {
+    border: 2px solid mediumslateblue;
+    padding: 10px;
+    margin: 4px;
+    position: relative;
+}
+
+.v-card > .remove_note {
+    position: absolute;
+    top: 9px;
+    right: 10px;
+    cursor: pointer;
+    display: flex;
+}
+
+.v-card > .remove_note > div.svg-container > svg{
+    margin-left: 5px;
+    /* fill: mediumslateblue; */
+}
+
+.v-card > .remove_note > div.svg-container.completed > svg{
+    fill: green;
+}
+
+.v-card > .remove_note > div.svg-container.color-picker > svg{
+    fill:url(#svg-color-picker)
+}
+
+.v-card > .remove_note > div.svg-container.remove > svg{
+    fill: red;
+}
+
+.v-card > .remove_note > div.svg-container > svg .main-stop {
+    stop-color: blueviolet;
+}
+
+.v-card > .remove_note > div.svg-container > svg .alt-stop {
+stop-color: black;
+}
