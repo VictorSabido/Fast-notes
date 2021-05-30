@@ -1,6 +1,6 @@
 <template>
     <div v-for="note in notesData" :key="note">
-        <Note :title="note.title"/>
+        <Note :id="note.id" :title="note.title"/>
     </div>
 </template>
 

@@ -1,21 +1,25 @@
 <template>
-    <div class="v-card">
+    <div class="v-card" :id="id">
         <span>{{ title }}</span>
-        <div class="remove_note" @click="removeNote($event.target)">x</div>
+        <div class="remove_note" @click="removeNote()">x</div>
     </div>
 </template>
 
 <script>
+import notesStore from '../store/notes'
+
 export default {
     props: {
+        id: {
+            type: Number
+        },
         title: {
             type: String
         }
     },
-    setup() {
-        const removeNote = (e) => {
-            console.log(e);
-            e.closest('div.v-card').remove()
+    setup(props) {
+        const removeNote = () => {
+            notesStore.commit('removeNoteById', props.id)
         }
 
         return {

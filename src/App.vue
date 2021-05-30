@@ -16,6 +16,8 @@
 import Notes from './components/Notes.vue'
 import { ref } from 'vue'
 import notesStore from './store/notes'
+import { computed } from 'vue'
+
 
 export default {
     name: 'App',
@@ -23,9 +25,7 @@ export default {
         Notes
     },
     setup() {
-        const notesData = ref([])
         const newNote = ref('')
-        notesData.value = notesStore.state.notes
 
         const addNote = (note_written) => {
             if(note_written !== '') {
@@ -34,6 +34,10 @@ export default {
 
             newNote.value = ''
         }
+
+        const notesData = computed(() => {
+            return notesStore.getters.getAllNotes
+        })
 
         return {
             addNote,
