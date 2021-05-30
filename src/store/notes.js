@@ -14,7 +14,6 @@ export default createStore({
             state.notes.push({id: uniqueID, title: payload})
         },
         removeNoteById(state, payload) {
-            console.log(payload, '');
             let filtered = state.notes.filter((note) => {
                 return note.id != payload
             })
@@ -24,7 +23,7 @@ export default createStore({
     },
     getters: {
         getAllNotes(state) {
-            return state.notes
+            return state.notes;
         }
     }
 })

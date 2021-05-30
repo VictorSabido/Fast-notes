@@ -1,13 +1,14 @@
 <template>
-    <!-- Your personal stickers -->
-    <h1>Fast Notes</h1>
-    <input type="text" 
-        @keyup.enter="addNote($event.target.value)"
-        v-model="newNote"
-    />
-
     <div>
-        <Notes :notesData="notesData" />
+        <h1>Fast Notes</h1>
+        <input type="text" 
+            @keyup.enter="addNote($event.target.value)"
+            v-model="newNote"
+        />
+
+        <div>
+            <Notes :notesData="notesData" />
+        </div>
     </div>
 </template>
 
