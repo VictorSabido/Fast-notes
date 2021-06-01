@@ -1,3 +1,10 @@
+$ambar :#ffc107;
+$purple :#673ab7;
+$green :#4caf50;
+$pink :#e91e63;
+$blue :#2196f3;
+$brown :#795548;
+
 .v-card {
     border: 2px solid mediumslateblue;
     padding: 10px;
@@ -41,53 +48,92 @@
     stop-color: black;
 }
 
+.bc.ambar {
+    border: 2px solid $ambar;
+}
+.bc.purple {
+    border: 2px solid $purple;
+}
+.bc.green {
+    border: 2px solid $green;
+}
+.bc.pink {
+    border: 2px solid $pink;
+}
+.bc.blue {
+    border: 2px solid $blue;
+}
+.bc.brown {
+    border: 2px solid $brown;
+}
+
 
 /* COLOR PICKER*/
 .modal-color-picker {
     width: 100px;
+    width: 100px;
+    position: absolute;
+    top: 40px;
+    left: 11px;
+    z-index: 5;
 
     .container-color-picker {
+        position: relative;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
         background-color: gainsboro;
         padding: 10px;
-        border-top-right-radius: 50px;
-        border-top-left-radius: 50px;
+        border-top-right-radius: 45px;
+        border-top-left-radius: 45px;
         border-bottom-right-radius: 18px;
         border-bottom-left-radius: 18px;
+        box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.5);
+        cursor: default;
+
+        &:before {
+            border: 25px solid gainsboro;
+            content: '';
+            position: absolute;
+            border-left-color: transparent;
+            border-top-color: transparent;
+            border-right-color: transparent;
+            bottom: 101px;
+            pointer-events: none;
+        }
 
         div.color {
-            border: 1px solid black;
+            // border: 1px solid black;
             border-radius: 50%;
             content: '';
             height: 20px;
             width: 20px;
             margin: 2px;
             padding: 2px;
+            cursor: pointer;
 
             &.ambar {
-                background-color: #ffc107;
+                background-color: $ambar;
             }
 
             &.purple {
-                background-color: #673ab7
+                background-color: $purple;
             }
 
             &.green {
-                background-color: #4caf50
+                background-color: $green;
             }
 
             &.pink {
-                background-color: #e91e63
+                background-color: $pink;
             }
-            
+
             &.blue {
-                background-color: #2196f3;
+                background-color: $blue;
             }
 
             &.brown {
-                background-color: #795548
+                background-color: $brown;
             }
         }
     }
