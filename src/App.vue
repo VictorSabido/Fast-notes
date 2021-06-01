@@ -9,6 +9,16 @@
         <div>
             <Notes :notesData="notesData" />
         </div>
+        <div class="modal-color-picker">
+            <div class="container-color-picker">
+                <div class="color ambar"></div>
+                <div class="color purple"></div>
+                <div class="color green"></div>
+                <div class="color blue"></div>
+                <div class="color pink"></div>
+                <div class="color brown"></div>
+            </div>
+        </div>
     </div>
 </template>
 
