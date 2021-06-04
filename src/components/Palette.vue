@@ -23,6 +23,10 @@ export default ({
     setup(props) {
         const setColor = (color) => {
             notesStore.commit('addNoteColor', {id: props.idNote, color})
+            notesStore.commit('setOverlayStatus', false)
+            document.querySelectorAll('.modal-color-picker').forEach(function(el) {
+                el.style.display = 'none';
+            });
         }
 
         return {
