@@ -1,9 +1,18 @@
-$ambar :#ffc107;
-$purple :#673ab7;
-$green :#4caf50;
-$pink :#e91e63;
-$blue :#2196f3;
-$brown :#795548;
+$ambar : #ffc107;
+$purple: #673ab7;
+$green : #4caf50;
+$pink  : #e91e63;
+$blue  : #2196f3;
+$brown : #795548;
+
+#app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+}
 
 .v-card {
     border: 2px solid mediumslateblue;

@@ -7,7 +7,6 @@ export default createStore({
             {'id': 1111111111, 'title': 'Nota 2'},
             {'id': 2355444444, 'title': 'Nota 3', 'color': 'pink'}
         ],
-        overlay: false
     },
     mutations: {
         addNote(state, payload) {
@@ -29,17 +28,11 @@ export default createStore({
                     }
                 })
             }
-        },
-        setOverlayStatus(state, payload) {
-            state.overlay = payload
         }
     },
     getters: {
         getAllNotes(state) {
             return state.notes;
-        },
-        getOverlayStatus(state) {
-            return state.overlay
         }
     }
 })

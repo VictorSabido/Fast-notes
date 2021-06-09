@@ -20,19 +20,16 @@ export default ({
             required: true
         }
     },
-    setup(props) {
+    setup(props, {emit}) {
         const setColor = (color) => {
             notesStore.commit('addNoteColor', {id: props.idNote, color})
-            notesStore.commit('setOverlayStatus', false)
-            document.querySelectorAll('.modal-color-picker').forEach(function(el) {
-                el.style.display = 'none';
-            });
+
+            emit('setPaletteStatus', false)
         }
 
         return {
             setColor
         }
-    }
-
+    },
 })
 </script>

@@ -10,7 +10,6 @@
             <Notes :notesData="notesData" />
         </div>
     </div>
-    <div class="u-overlay" :class="{active: overlayStatus}" @click="setOverlay(false)"></div>
 </template>
 
 <script>
@@ -41,35 +40,11 @@ export default {
             return notesStore.getters.getAllNotes
         })
 
-        const overlayStatus = computed(() => {
-            return notesStore.getters.getOverlayStatus
-        })
-
-        const setOverlay = (status) => {
-            notesStore.commit('setOverlayStatus', status);
-            document.querySelectorAll('.modal-color-picker').forEach(function(el) {
-                el.style.display = 'none';
-            });
-        }
-
         return {
             addNote,
             notesData,
-            newNote,
-            overlayStatus,
-            setOverlay
+            newNote
         }
     },
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
