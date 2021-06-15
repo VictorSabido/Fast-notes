@@ -1,6 +1,8 @@
 <template>
-    <div v-for="note in notesData" :key="note">
-        <Note :id="note.id" :title="note.title" :color="note.color"/>
+    <div class="notes-container">
+        <Note
+             v-for="note in notesData" :key="note"
+            :id="note.id" :title="note.title" :color="note.color"/>
     </div>
 </template>
 

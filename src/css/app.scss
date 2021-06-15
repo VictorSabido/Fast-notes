@@ -5,56 +5,129 @@ $pink  : #e91e63;
 $blue  : #2196f3;
 $brown : #795548;
 
+$default: mediumslateblue;
+
+html, body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    background-color: #ededed;
+}
+
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
     color: #2c3e50;
     margin-top: 60px;
 }
 
-.v-card {
-    border: 2px solid mediumslateblue;
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.notes-container {
+    min-height: 500px;
+    padding: 10px;
+    background-color: whitesmoke;
+}
+
+.note {
+    border: 2px solid $default;
     padding: 10px;
     margin: 4px;
     position: relative;
-}
+    background-color: white;
 
-.v-card > .remove_note {
-    position: absolute;
-    top: 9px;
-    right: 10px;
-    cursor: pointer;
     display: flex;
-}
+    justify-content: space-between;
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,.1),0 10px 10px -5px rgba(0,0,0,.04);
 
-.v-card > .remove_note > div.svg-container > svg{
-    margin-left: 5px;
-}
+    .corner-color {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        height: 0;
+        width: 0;
+        content: '';
+        border-left: 20px solid $default;
+        border-bottom: 20px solid transparent;
 
-.v-card > .remove_note > div.svg-container.info > svg .cls-1,.cls-2{
-    fill:#2e79bd
-}
+        &.ambar {
+            border-left: 20px solid $ambar;
+        }
+        &.purple {
+            border-left: 20px solid $purple;
+        }
+        &.green {
+            border-left: 20px solid $green;
+        }
+        &.pink {
+            border-left: 20px solid $pink;
+        }
+        &.blue {
+            border-left: 20px solid $blue;
+        }
+        &.brown {
+            border-left: 20px solid $brown;
+        }
+    }
 
-.v-card > .remove_note > div.svg-container.completed > svg{
-    fill: green;
-}
+    .text-note {
+        width: 100%;
 
-.v-card > .remove_note > div.svg-container.color-picker > svg{
-    fill:url(#svg-color-picker)
-}
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 
-.v-card > .remove_note > div.svg-container.remove > svg{
-    fill: red;
-}
+    .options-note {
+        position: relative;
+        display: flex;
+        cursor: pointer;
+        border-left: 1px solid gray;
 
-.v-card > .remove_note > div.svg-container > svg .main-stop {
-    stop-color: blueviolet;
-}
+        div.svg-container {
+            svg{
+                margin-left: 5px;
+            }
 
-.v-card > .remove_note > div.svg-container > svg .alt-stop {
-    stop-color: black;
+            &.info > svg .cls-1,.cls-2{
+                fill:#2e79bd
+            }
+
+            &.completed > svg{
+                fill: green;
+            }
+
+            &.color-picker > svg{
+                fill:url(#svg-color-picker)
+            }
+
+            &.remove > svg{
+                fill: red;
+            }
+
+            svg {
+                .main-stop {
+                    stop-color: blueviolet;
+                }
+
+                .alt-stop {
+                    stop-color: black;
+                }
+
+                .alt-stop {
+                    stop-color: black;
+                }
+            }
+        }
+    }
 }
 
 .bc.ambar {
@@ -111,7 +184,6 @@ $brown : #795548;
         }
 
         div.color {
-            // border: 1px solid black;
             border-radius: 50%;
             content: '';
             height: 20px;
@@ -158,9 +230,30 @@ $brown : #795548;
     visibility: hidden;
     transition: 300ms all;
     background-color: #000;
+
+    &.active {
+        opacity: 0.6;
+        visibility: visible;
+    }
 }
 
-.u-overlay.active {
-    opacity: 0.6;
-    visibility: visible;
+
+
+// MEDIAS
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1170px;
+    }
 }

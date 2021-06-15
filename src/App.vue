@@ -1,14 +1,12 @@
 <template>
-    <div>
+    <div class="container">
         <h1>Fast Notes</h1>
         <input type="text"
             @keyup.enter="addNote($event.target.value)"
             v-model="newNote"
         />
 
-        <div>
-            <Notes :notesData="notesData" />
-        </div>
+        <Notes :notesData="notesData" />
     </div>
 </template>
 
