@@ -1,15 +1,9 @@
 <template>
-    <button id="myBtn">Open Modal</button>
-
-    <!-- The Modal -->
     <div id="myModal" class="modal" :class="isActive" @click="closeModal">
-
-        <!-- Modal content -->
         <div class="modal-content">
             <span class="close" @click="closeModal">&times;</span>
-            <p>Some text in the Modal..</p>
+            <p>{{ title }}</p>
         </div>
-
     </div>
 </template>
 
@@ -19,12 +13,12 @@ import { inject, onMounted, ref } from '@vue/runtime-core'
 export default {
     setup() {
         const isActive = ref('');
+        const title = ref('');
 
         const emitter = inject("emitter")
         onMounted(() => {
-            emitter.on("blogLoaded", (status) => {
-                console.log(status)
-
+            emitter.on("openModal", (data) => {
+                title.value = data
                 isActive.value = 'active'
             })
         })
@@ -38,14 +32,9 @@ export default {
 
         return {
             isActive,
+            title,
             closeModal
         }
     },
 }
 </script>
-
-<style>
-    .active {
-        display: block !important;
-    }
-</style>
