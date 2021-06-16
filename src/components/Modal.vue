@@ -1,30 +1,36 @@
 <template>
-    <div id="myModal" class="modal" :class="isActive" @click="closeModal">
+    <div id="modal-info" class="modal" :class="isActive" @click="closeModal">
         <div class="modal-content">
             <span class="close" @click="closeModal">&times;</span>
-            <p>{{ title }}</p>
+            <p>{{ modal.title }}</p>
+
+            <span style="font-size:12px">{{ modal.date }}</span>
         </div>
     </div>
 </template>
 
 <script>
-import { inject, onMounted, ref } from '@vue/runtime-core'
+import { inject, onMounted, reactive, ref } from '@vue/runtime-core'
 
 export default {
     setup() {
         const isActive = ref('');
-        const title = ref('');
+        const modal = reactive({
+            title: '',
+            date : ''
+        });
 
         const emitter = inject("emitter")
         onMounted(() => {
-            emitter.on("openModal", (data) => {
-                title.value = data
+            emitter.on("openModal", ({title, id}) => {
+                modal.title = title
+                modal.date  = new Date(id).toLocaleString()
                 isActive.value = 'active'
             })
         })
 
         const closeModal = (event) => {
-            if(event.target.id == 'myModal' || event.target.classList.contains('close')) {
+            if(event.target.id == 'modal-info' || event.target.classList.contains('close')) {
                 isActive.value = ''
             }
         }
@@ -32,7 +38,7 @@ export default {
 
         return {
             isActive,
-            title,
+            modal,
             closeModal
         }
     },

@@ -2,7 +2,7 @@
     <div class="notes-container">
         <Note
              v-for="note in notesData" :key="note"
-            :id="note.id" :title="note.title" :color="note.color"/>
+            :id="note.id" :title="note.title" :color="note.color" :isCompleted="note.completed"/>
     </div>
 </template>
 

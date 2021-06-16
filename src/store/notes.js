@@ -32,6 +32,13 @@ export default createStore({
                     }
                 })
             }
+        },
+        toggleStatus(state, id) {
+            state.notes.filter((note) => {
+                if(note.id == id) {
+                    note.completed = !note.completed
+                }
+            })
         }
     },
     getters: {
