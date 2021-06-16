@@ -1,11 +1,22 @@
 <template>
     <Modal />
     <div class="container">
-        <h1>Fast Notes</h1>
-        <input type="text"
+        <div class="app-title">
+            <h1>Fast Notes</h1>
+        </div>
+        <textarea type="text"
             @keyup.enter="addNote($event.target.value)"
             v-model="newNote"
         />
+
+        <div>
+            <input type="radio" name="notes" value="all" id="all-notes" v-model="notesType" checked>
+            <label for="all-notes">All</label>
+            <input type="radio" name="notes" value="completed" id="completed-notes" v-model="notesType">
+            <label for="completed-notes">Completed</label>
+            <input type="radio" name="notes" value="incompleted" id="incompleted-notes" v-model="notesType">
+            <label for="incompleted-notes">Incomplete</label>
+        </div>
 
         <Notes :notesData="notesData" />
     </div>
@@ -25,6 +36,13 @@ export default {
     },
     setup() {
         const newNote = ref('')
+        const notesType = ref('')
+
+        const filters = {
+            'all'        : 'getAllNotes',
+            'completed'  : 'getCompletedNotes',
+            'incompleted': 'getIncompletedNotes',
+        }
 
         const addNote = (note_written) => {
             if(note_written !== '') {
@@ -35,13 +53,17 @@ export default {
         }
 
         const notesData = computed(() => {
-            return notesStore.getters.getAllNotes
+            let fnGetter = filters[notesType.value] || 'getAllNotes'
+
+            return notesStore.getters[fnGetter]
         })
+
 
         return {
             addNote,
             notesData,
-            newNote
+            newNote,
+            notesType
         }
     },
 }
