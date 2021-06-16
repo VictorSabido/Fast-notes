@@ -1,4 +1,5 @@
 <template>
+    <Modal />
     <div class="container">
         <h1>Fast Notes</h1>
         <input type="text"
@@ -13,15 +14,14 @@
 <script>
 
 import Notes from './components/Notes.vue'
-import { ref } from 'vue'
+import Modal from './components/Modal.vue'
+import { ref, computed } from 'vue'
 import notesStore from './store/notes'
-import { computed } from 'vue'
-
 
 export default {
     name: 'App',
     components: {
-        Notes
+        Notes, Modal
     },
     setup() {
         const newNote = ref('')
